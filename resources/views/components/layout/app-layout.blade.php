@@ -1,5 +1,7 @@
 @props([
-    'title' => null
+    'title' => null,
+    'scripts' => null,
+    'libraries' => null,
 ])
 <!DOCTYPE html>
 <html lang="en">
@@ -9,11 +11,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}</title>
     @vite('resources/js/app.js')
+    {{ $libraries }}
 </head>
 <body>
     <x-layout.nav-bar/>
     <div>
         {{ $slot }}
     </div>
+
+    {{ $scripts }}
 </body>
 </html>
