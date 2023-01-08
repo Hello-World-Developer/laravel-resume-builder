@@ -14,7 +14,6 @@
                 <div class="max-w-[600px] w-full">
                     <header class="bg-[#303745] flex min-h-[50px]">
                         <div class="w-[80px] h-[80px] bg-cover bg-center bg-no-repeat"
-                            id="preview-cv-profile"
                             id="preview-cv-profile">
                         </div>
                         <div class="ml-5 mt-2 leading-[0]">

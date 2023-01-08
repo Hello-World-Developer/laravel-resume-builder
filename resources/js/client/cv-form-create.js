@@ -11,8 +11,8 @@ window.addSkill = function () {
     const uId = new Date().getTime();
     const skill = clone.querySelector('#skill-default');
     skill.setAttribute('id', `skill-${uId}`)
-    skill.querySelector('[name="skill[default]name"]').setAttribute('name', `skill[${uId}]name`)
-    skill.querySelector('[name="skill[default]range"]').setAttribute('name', `skill[${uId}]range`)
+    skill.querySelector('[id="skill_name_default"]').setAttribute('name', `skill[${uId}]name`)
+    skill.querySelector('[id="skill_range_default"]').setAttribute('name', `skill[${uId}]range`)
     skill.querySelector('[data-target]').setAttribute('data-target', `#skill-${uId}`);
     skill.querySelector('[onclick]').setAttribute('onclick', `removeSkillField(this.dataset.target)`)
     $el('#skill-container').appendChild(skill);

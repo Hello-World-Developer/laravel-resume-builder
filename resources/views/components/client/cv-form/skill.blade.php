@@ -30,7 +30,7 @@
                     </label>
                     <input
                         class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        id="skill_name_1"
+                        id="skill_name_{{ $id }}"
                         name="skill[{{ $id }}][name]"
                         type="text"
                         required>
@@ -43,7 +43,7 @@
                         <div class="flex items-center w-full">
                             <input
                                 class="skill-range flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
-                                id="skill_name_{{ $id }}"
+                                id="skill_range_{{ $id }}"
                                 name="skill[{{ $id }}][range]"
                                 type="range"
                                 value="0">
