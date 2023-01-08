@@ -49,3 +49,24 @@ $el("#profile").addEventListener("change", function (e) {
     }
 });
 
+const previewHandler = function (inputs) {
+    inputs.forEach(function (input) {
+        let timeout;
+        $el(input).addEventListener('keyup', function (e) {
+            if (timeout) clearTimeout(timeout)
+            timeout = setTimeout(() => {
+                $el(`#preview-${e.target.id}`).innerText = e.target.value
+            }, 300)
+        })
+    })
+}
+
+previewHandler([
+    '#first-name',
+    '#last-name',
+    '#phone-number',
+    '#email',
+    '#address',
+    '#head-line'
+])
+

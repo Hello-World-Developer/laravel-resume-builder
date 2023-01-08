@@ -19,22 +19,26 @@
                         </div>
                         <div class="ml-5 mt-2 leading-[0]">
                             <h2 class="text-white text-lg font-semi-bold ">
-                                <span>Wai Yan </span>
-                                <span>Lin</span>
+                                <span id="preview-first-name"></span>
+                                <span id="preview-last-name"></span>
                             </h2>
-                            <p class="text-[0.4rem] font-bold leading-[3px] text-gray-400">Web Developer</p>
-                            <div class="mt-3 flex -mx-2">
-                                <p class="mx-2 text-[0.4rem] leading-4 font-bold text-gray-400"
-                                    id="preview-email">
-                                    wai@gmail.com
+                            <p class="text-[0.4rem] font-bold leading-[3px] text-gray-400"
+                                id="preview-head-line"></p>
+                            <div class="mt-3 flex items-center -mx-2">
+                                <p class="mx-2 flex items-center text-[0.5rem] font-bold text-gray-400">
+                                    <x-icon.mobile-phone class="w-[0.5rem] h-[0.5rem]" />
+                                    <span class="ml-1 leading-3"
+                                        id="preview-phone-number"></span>
                                 </p>
-                                <p class="mx-2 text-[0.4rem] leading-4 font-bold text-gray-400"
-                                    id="preview-email">
-                                    phone
+                                <p class="mx-2 flex items-center text-[0.5rem] font-bold text-gray-400">
+                                    <x-icon.envelope class="w-[0.5rem] h-[0.5rem]" />
+                                    <span class="ml-1 leading-3"
+                                        id="preview-email"></span>
                                 </p>
-                                <p class="mx-2 text-[0.4rem] leading-4 font-bold text-gray-400"
-                                    id="preview-email">
-                                    address
+                                <p class="mx-2 flex items-center text-[0.5rem] font-bold text-gray-400">
+                                    <x-icon.location class="w-[0.5rem] h-[0.5rem]" />
+                                    <span class="ml-1 leading-3"
+                                        id="preview-address"></span>
                                 </p>
                             </div>
                         </div>

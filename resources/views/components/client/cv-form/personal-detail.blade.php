@@ -1,4 +1,4 @@
-<div id="Personal-Detail">
+<div id="personal-detail">
     <input class="peer/show-profile hidden"
         id="show-profile"
         type="checkbox"
