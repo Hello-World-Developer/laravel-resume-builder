@@ -15,8 +15,8 @@
             <x-client.cv-form.language />
         </div>
         <div class="h-screen overflow-y-auto flex-1">
-            <div class="flex justify-center mt-10 min-h-[90vh]">
-                <div class="max-w-[600px] w-full border shadow-lg">
+            <div class="flex justify-center mt-10">
+                <div class="max-w-[500px] w-full border shadow-lg">
                     <header class="bg-[#303745] flex min-h-[50px]">
                         <div class="w-[80px] h-[80px] bg-cover bg-center bg-no-repeat"
                             id="preview-cv-profile">
@@ -51,10 +51,10 @@
                             </div>
                         </div>
                     </header>
-                    <div class="p-5 flex">
-                        <div class="w-[65%] border-r">
+                    <div class="p-5 flex min-h-[75vh]">
+                        <div class="w-[65%] border-r h-[auto]">
                             <div class="p-3">
-                                <h2 class="font-semi-bold text-md text-gray-700">Education</h2>
+                                <h2 class="font-semi-bold text-xs text-gray-700">Education</h2>
                                 <div
                                     class="flex justify-between items-center text-[0.6rem] font-semibold text-gray-700">
                                     <span id="preview-edu-degree"></span>
@@ -76,14 +76,14 @@
                         </div>
                         <div class="w-[35%]">
                             <div class="p-3">
-                                <h2 class="font-semi-bold text-md text-gray-700">Skills</h2>
+                                <h2 class="font-semi-bold text-xs text-gray-700">Skills</h2>
                                 <div id="preview-skill-container">
                                   {{-- render skill --}}
                                 </div>
                                 <hr class="mt-3">
                             </div>
                             <div class="p-3">
-                                <h2 class="font-semi-bold text-md text-gray-700">Languages</h2>
+                                <h2 class="font-semi-bold text-xs text-gray-700">Languages</h2>
                                 <div id="preview-language-container">
                                     {{-- <div>
                                         <span class="text-[0.6rem] text-gray-700 font-semibold">English</span>
