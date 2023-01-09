@@ -1,28 +1,24 @@
-window.removeSkillField = function (target) {
-    $el(target).remove();
-    const hasSkillField = $el('#skill-container').firstElementChild;
-    if (!hasSkillField) {
-        $el('#show-skill').checked = false;
-    }
-}
 
-window.addSkill = function () {
-    const clone = $el('#clone-skill').content.cloneNode(true);
-    const uId = new Date().getTime();
-    const skill = clone.querySelector('#skill-default');
-    skill.setAttribute('id', `skill-${uId}`)
-    skill.querySelector('[id="skill_name_default"]').setAttribute('name', `skill[${uId}]name`)
-    skill.querySelector('[id="skill_range_default"]').setAttribute('name', `skill[${uId}]range`)
-    skill.querySelector('[data-target]').setAttribute('data-target', `#skill-${uId}`);
-    skill.querySelector('[onclick]').setAttribute('onclick', `removeSkillField(this.dataset.target)`)
-    $el('#skill-container').appendChild(skill);
-}
+import './cv-form-add-skill';
+import './cv-form-edu';
 
-$el('#show-skill').addEventListener('click', function (e) {
-    if (e.target.checked && !$el('#skill-container').firstElementChild) {
-        addSkill();
-    }
-})
+ClassicEditor
+    .create(document.querySelector('#description'), {
+
+        licenseKey: '',
+
+    })
+    .then(editor => {
+        window.editor = editor;
+
+    })
+    .catch(error => {
+        console.error('Oops, something went wrong!');
+        console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+        console.warn('Build id: lvci6fhu4lsj-oox7f88tvmun');
+        console.error(error);
+    });
+
 
 $el("#profile").onclick = function () {
     window.onfocus = () => {
@@ -55,6 +51,11 @@ const previewHandler = function (inputs) {
         $el(input).addEventListener('keyup', function (e) {
             if (timeout) clearTimeout(timeout)
             timeout = setTimeout(() => {
+                if (['email', 'address', 'phone-number'].includes(e.target.id) && e.target.value) {
+                    $el(`#preview-${e.target.id}`).parentElement.querySelector('svg')?.classList.remove('hidden')
+                } else if (['email', 'address', 'phone-number'].includes(e.target.id)) {
+                    $el(`#preview-${e.target.id}`).parentElement.querySelector('svg')?.classList.add('hidden')
+                }
                 $el(`#preview-${e.target.id}`).innerText = e.target.value
             }, 300)
         })
@@ -67,6 +68,9 @@ previewHandler([
     '#phone-number',
     '#email',
     '#address',
-    '#head-line'
+    '#head-line',
+    '#post-code',
+    '#city',
 ])
+
 
