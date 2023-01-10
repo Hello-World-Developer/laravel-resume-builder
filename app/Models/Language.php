@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Language extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'name',
+        'level',
+    ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

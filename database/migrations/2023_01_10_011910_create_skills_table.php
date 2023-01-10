@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('skill');
+            $table->string('name');
+            $table->integer('range');
             $table->timestamps();
         });
     }

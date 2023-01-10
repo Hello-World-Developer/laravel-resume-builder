@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Skill extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'name',
+        'range',
+    ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
