@@ -25,13 +25,13 @@
             <div class="border p-4">
                 <div class="">
                     <label class="text-md text-gray-500 mb-2 inline-block"
-                        for="language[{{ $id }}][name]">
+                        for="languages[{{ $id }}][name]">
                         Language
                     </label>
                     <input
                         class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         id="language[{{ $id }}][name]"
-                        name="language[{{ $id }}][name]"
+                        name="languages[{{ $id }}][name]"
                         type="text"
                         required>
                 </div>
@@ -43,7 +43,7 @@
                         <div class="flex items-center w-full">
                             <input
                                 class="skill-range flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
-                                name="language[{{ $id }}][name]"
+                                name="languages[{{ $id }}][level]"
                                 type="range"
                                 value="0">
                             <div class="ml-4 flex-1">

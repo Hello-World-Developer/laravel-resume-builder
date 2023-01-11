@@ -4,10 +4,14 @@
     </template>
     <div class="flex">
         <div class="h-screen overflow-y-auto flex-1 p-10">
-            <x-client.cv-form.personal-detail />
-            <x-client.cv-form.education />
-            <x-client.cv-form.skill />
-            <x-client.cv-form.language />
+            <form action="{{ route('client.cv-form.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <x-client.cv-form.personal-detail />
+                <x-client.cv-form.education />
+                <x-client.cv-form.skill />
+                <x-client.cv-form.language />
+                <button>Submit</button>
+            </form>
         </div>
         <div class="h-screen overflow-y-auto flex-1">
             <div class="flex justify-center mt-20">
