@@ -48,8 +48,9 @@ class CvFormController extends Controller
             DB::beginTransaction();
 
             $profile = $request->file('profile');
-            $profile_name = uniqid() . '-' . $profile->getClientOriginalName();
-            $profile->storeAs('public', $profile_name);
+            $ext =$profile->getClientOriginalExtension();
+            $base64encode = base64_encode(file_get_contents($profile->path()));
+            $url = 'data:image/'.$ext.';base64,'.$base64encode;
 
             $newForm = Form::create([
                 'user_id' => 1,
@@ -61,7 +62,7 @@ class CvFormController extends Controller
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
-                'image' => $profile_name,
+                'image' => $url,
                 'head_line' => $request->head_line,
                 'phone_number' => $request->phone_number,
                 'address' => $request->address,
@@ -99,6 +100,7 @@ class CvFormController extends Controller
                 }
             }
             DB::commit();
+
             $formInfo = Form::with('userDetail', 'skills', 'languages', 'education')
                 ->latest()
                 ->first();

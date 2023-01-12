@@ -11,7 +11,8 @@
     </template>
     <div class="flex">
         <div class="h-screen overflow-y-auto flex-1 p-10">
-            <form action="{{ route('client.cv-form.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('client.cv-form.store') }}" method="POST" enctype="multipart/form-data"
+                  autocomplete="off">
                 @csrf
                 @method('POST')
                 <x-client.cv-form.personal-detail />
@@ -27,11 +28,11 @@
         </div>
         <div class="h-screen overflow-y-auto flex-1">
             <div class="flex justify-center mt-10">
-                <div class="max-w-[500px] border shadow-lg">
+                <div class="min-w-[500px] border shadow-lg">
                     <header class="bg-[#303745] flex min-h-[50px]">
                         @if ($cvInfo = session('cv-info'))
                             <div class=" w-[80px] h-[80px] bg-cover bg-center bg-no-repeat" id="preview-cv-profile"
-                                 style="background-image: url('{{ asset('storage/' . $cvInfo->userDetail->image) }}')">
+                                 style="background-image: url('{{ $cvInfo->userDetail->image }}')">
                             </div>
                             <div class="ml-5 mt-2 leading-[0]">
                                 <h2 class="text-white text-lg font-semi-bold ">
@@ -122,7 +123,7 @@
                                     <hr class="mt-3" />
                                 @endif
                             </div>
-                            <div id="language-container" class="p-3">
+                            <div class="p-3" id="language-container">
                                 @if ($cvInfo = session('cv-info'))
                                     <h2 class="font-semi-bold text-xs text-gray-700">Languages</h2>
                                     @foreach ($cvInfo->languages as $language)
@@ -181,6 +182,6 @@
     </div>
     </div>
     <x-slot:scripts>
-        @vite('resources/js/client/cv-form-create.js')
+        @vite(['resources/js/client/cv-form-create.js'])
     </x-slot:scripts>
 </x-layout.app-layout>

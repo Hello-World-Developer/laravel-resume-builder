@@ -8,6 +8,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
                 'resources/js/client/cv-form-create.js',
+                'resources/js/client/js-pdf.js',
             ],
             refresh: true,
         }),
