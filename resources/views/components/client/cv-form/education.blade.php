@@ -26,6 +26,7 @@
                 <input
                     class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     id="degree"
+                    name="degree"
                     type="text"
                     required>
             </div>
@@ -38,6 +39,7 @@
                     <input
                         class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         id="school"
+                        name="school"
                         type="text"
                         required>
                 </div>
@@ -64,6 +66,7 @@
                         class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         id="start-date"
                         type="date"
+                        name="start_date"
                         placeholder="John"
                         required>
                 </div>
@@ -77,19 +80,18 @@
                         id="end-date"
                         type="date"
                         placeholder="John"
+                        name="end_date"
                         required>
                 </div>
             </div>
             <div class="mt-3">
-                <form id="description-form">
-                    <label for="description"
+                <label for="description"
                     class="block mb-1 text-md font-medium text-gray-500 dark:text-white">Description</label>
                     <textarea id="description"
                         name="description""
                         rows="4"
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Write your thoughts here..."></textarea>
-                </form>
             </div>
         </div>
     </div>

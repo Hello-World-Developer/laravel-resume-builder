@@ -1,6 +1,6 @@
 
-import './cv-form-add-skill';
-import './cv-form-edu';
+// import './cv-form-add-skill';
+// import './cv-form-edu';
 
 ClassicEditor
     .create(document.querySelector('#description'), {
@@ -38,39 +38,39 @@ $el("#profile").addEventListener("change", function (e) {
         const fileReader = new FileReader();
         fileReader.onload = function (e) {
             $el("#upload-profile-btn").style.backgroundImage = `url("${e.target.result}")`;
-            $el('#preview-cv-profile').style.backgroundImage = `url("${e.target.result}")`;
+            // $el('#preview-cv-profile').style.backgroundImage = `url("${e.target.result}")`;
             $el("#upload-profile-btn").querySelector("svg").style.display = "none";
         };
         fileReader.readAsDataURL(e.target.files[0]);
     }
 });
 
-const previewHandler = function (inputs) {
-    inputs.forEach(function (input) {
-        let timeout;
-        $el(input).addEventListener('keyup', function (e) {
-            if (timeout) clearTimeout(timeout)
-            timeout = setTimeout(() => {
-                if (['email', 'address', 'phone-number'].includes(e.target.id) && e.target.value) {
-                    $el(`#preview-${e.target.id}`).parentElement.querySelector('svg')?.classList.remove('hidden')
-                } else if (['email', 'address', 'phone-number'].includes(e.target.id)) {
-                    $el(`#preview-${e.target.id}`).parentElement.querySelector('svg')?.classList.add('hidden')
-                }
-                $el(`#preview-${e.target.id}`).innerText = e.target.value
-            }, 300)
-        })
-    })
-}
+// const previewHandler = function (inputs) {
+//     inputs.forEach(function (input) {
+//         let timeout;
+//         $el(input).addEventListener('keyup', function (e) {
+//             if (timeout) clearTimeout(timeout)
+//             timeout = setTimeout(() => {
+//                 if (['email', 'address', 'phone-number'].includes(e.target.id) && e.target.value) {
+//                     $el(`#preview-${e.target.id}`).parentElement.querySelector('svg')?.classList.remove('hidden')
+//                 } else if (['email', 'address', 'phone-number'].includes(e.target.id)) {
+//                     $el(`#preview-${e.target.id}`).parentElement.querySelector('svg')?.classList.add('hidden')
+//                 }
+//                 $el(`#preview-${e.target.id}`).innerText = e.target.value
+//             }, 300)
+//         })
+//     })
+// }
 
-previewHandler([
-    '#first-name',
-    '#last-name',
-    '#phone-number',
-    '#email',
-    '#address',
-    '#head-line',
-    '#post-code',
-    '#city',
-])
+// previewHandler([
+//     '#first-name',
+//     '#last-name',
+//     '#phone-number',
+//     '#email',
+//     '#address',
+//     '#head-line',
+//     '#post-code',
+//     '#city',
+// ])
 
 

@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::name('client.')->group(function () {
     Route::get('/', HomeController::class)->name('index');
     Route::get('/login', [AuthController::class, 'login'])->name('login');
-    
+
     Route::get('/cv-form/create', [CvFormController::class, 'create'])->name('cv-form.create');
+    Route::post('/cv-form/create', [CvFormController::class, 'store'])->name('cv-form.store');
 });

@@ -80,8 +80,8 @@ window.removeSkillField = function (target) {
 window.addSkill = function () {
     const clone = $el('#clone-skill').content.cloneNode(true);
     const uId = new Date().getTime();
-    const skill = clone.querySelector('#skill-default');
-    skill.setAttribute('id', `skill-${uId}`)
+    const skill = clone.querySelector('#skill_default');
+    skill.setAttribute('id', `skill_${uId}`)
     skill.querySelector('[id="skill_name_default"]').setAttribute('name', `skill[${uId}]name`)
     skill.querySelector('[id="skill_name_default"]').setAttribute('id', `skill_name_${uId}`)
     skill.querySelector('[id="skill_range_default"]').setAttribute('name', `skill[${uId}]range`)
