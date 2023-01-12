@@ -13,17 +13,32 @@ const skillLists = [
 const renderSkillLists = function () {
     const skillContainer = document.querySelector('#preview-skill-container');
     skillContainer.innerHTML = '';
-    skillLists.forEach(function (sk) {
-        if (sk.name) {
-            skillContainer.innerHTML += `<div>
-        <span class="text-[0.6rem] text-gray-700 font-semibold">${sk.name}</span>
-        <div class="w-full bg-gray-200 rounded-full h-1.5 mb-1 dark:bg-gray-700">
-            <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
-                style="width: ${sk.level}%"></div>
-            </div>
-    </div>`
-        }
-    })
+    if (skillLists.length) {
+        const heading = document.createElement('h2')
+        heading.className = 'font-semi-bold text-xs text-gray-700'
+        heading.innerText = 'Skill'
+        skillContainer.appendChild(heading)
+
+        skillLists.forEach(function (sk) {
+            if (sk.name) {
+                skillContainer.innerHTML += `<div>
+                    <span class="text-[0.6rem] text-gray-700 font-semibold">${sk.name}</span>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mb-1 dark:bg-gray-700">
+                        <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                            style="width: ${sk.level}%"></div>
+                        </div>
+                    </div>`
+            }
+        })
+
+        skillContainer.innerHTML += `<hr class="mt-3" />`
+
+        const haveSkill = skillLists.some(function (sk) {
+            return sk.name.length
+        })
+
+        if (!haveSkill) skillContainer.innerHTML = '';
+    }
 }
 
 /**

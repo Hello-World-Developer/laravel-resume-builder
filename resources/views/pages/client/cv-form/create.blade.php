@@ -75,17 +75,17 @@
                             </div>
                         </div>
                         <div class="w-[35%]">
-                            <div class="p-3">
-                                <h2 class="font-semi-bold text-xs text-gray-700">Skills</h2>
+                            <div class="p-3" id="preview-skill-container">
+                                {{-- <h2 class="font-semi-bold text-xs text-gray-700">Skills</h2>
                                 <div id="preview-skill-container">
-                                  {{-- render skill --}}
+                                  render skill
                                 </div>
-                                <hr class="mt-3">
+                                <hr class="mt-3"> --}}
                             </div>
                             <div class="p-3">
                                 <h2 class="font-semi-bold text-xs text-gray-700">Languages</h2>
                                 <div id="preview-language-container">
-                                    {{-- <div>
+                                    <div>
                                         <span class="text-[0.6rem] text-gray-700 font-semibold">English</span>
                                         <div class="w-full bg-gray-200 rounded-full h-1.5 mb-1 dark:bg-gray-700">
                                             <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
@@ -112,7 +112,7 @@
                                             <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
                                                 style="width: 76%"></div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                                 <hr class="mt-3">
                             </div>
