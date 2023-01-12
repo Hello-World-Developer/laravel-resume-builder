@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('user_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('form_id')->constrained('forms')->cascadeOnDelete();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('head_line');
             $table->string('phone_number');
             $table->string('address');
-            $table->string('post_code');
+            $table->string('post_code')->nullable();
             $table->string('city');
             $table->timestamps();
         });

@@ -27,42 +27,43 @@
         </div>
         <div class="h-screen overflow-y-auto flex-1">
             <div class="flex justify-center mt-10">
-                <div class="min-w-[500px] w-auto border shadow-lg">
+                <div class="max-w-[500px] border shadow-lg">
                     <header class="bg-[#303745] flex min-h-[50px]">
                         @if ($cvInfo = session('cv-info'))
-                            <div class=" w-[80px] h-[80px] bg-cover bg-center bg-no-repeat" id="preview-cv-profile" style="background-image: url('{{ asset('storage/'.$cvInfo->userDetails->image) }}')">
+                            <div class=" w-[80px] h-[80px] bg-cover bg-center bg-no-repeat" id="preview-cv-profile"
+                                 style="background-image: url('{{ asset('storage/' . $cvInfo->userDetail->image) }}')">
                             </div>
                             <div class="ml-5 mt-2 leading-[0]">
                                 <h2 class="text-white text-lg font-semi-bold ">
-                                    <span id="preview-first-name">{{$cvInfo->userDetails->first_name}}</span>
-                                    <span id="preview-last-name">{{$cvInfo->userDetails->last_name}}</span>
+                                    <span id="preview-first-name">{{ $cvInfo->userDetail->first_name }}</span>
+                                    <span id="preview-last-name">{{ $cvInfo->userDetail->last_name }}</span>
                                 </h2>
                                 <p class="text-[0.4rem] font-bold leading-[3px] text-gray-400" id="preview-head-line">
-                                    {{$cvInfo->userDetails->head_line}}
+                                    {{ $cvInfo->userDetail->head_line }}
                                 </p>
                                 <div class="mt-3 flex items-center -mx-2">
                                     <p class="mx-2 flex items-center text-[0.5rem] font-bold text-gray-400">
                                         <x-icon.mobile-phone class="w-[0.5rem] h-[0.5rem] hidden" />
                                         <span class="ml-1 leading-3" id="preview-phone-number">
-                                            {{$cvInfo->userDetails->phone_number}}
+                                            {{ $cvInfo->userDetail->phone_number }}
                                         </span>
                                     </p>
                                     <p class="mx-2 flex items-center text-[0.5rem] font-bold text-gray-400">
                                         <x-icon.envelope class="w-[0.5rem] h-[0.5rem] hidden" />
                                         <span class="ml-1 leading-3" id="preview-email">
-                                            {{$cvInfo->userDetails->email}}
+                                            {{ $cvInfo->userDetail->email }}
                                         </span>
                                     </p>
                                     <p class="mx-2 flex items-center text-[0.5rem] font-bold text-gray-400">
                                         <x-icon.location class="w-[0.5rem] h-[0.5rem] hidden" />
                                         <span class="ml-1 leading-3" id="preview-post-code">
-                                            {{$cvInfo->userDetails->post_code}}
+                                            {{ $cvInfo->userDetail->post_code }}
                                         </span>
                                         <span class="ml-1 leading-3" id="preview-city">
-                                            {{$cvInfo->userDetails->city}}
+                                            {{ $cvInfo->userDetail->city }}
                                         </span>
                                         <span class="ml-1 leading-3 mr-2" id="preview-address">
-                                            {{$cvInfo->userDetails->address}}
+                                            {{ $cvInfo->userDetail->address }}
                                         </span>
                                     </p>
                                 </div>
@@ -76,70 +77,71 @@
                                     {{-- eductaion section --}}
                                     <h2 class="font-semi-bold text-xs text-gray-700">Education</h2>
                                     <div
-                                         class="flex justify-between items-center text-[0.6rem] font-semibold text-gray-700">
+                                         class="flex justify-between items-center text-[0.5rem] font-semibold text-gray-700">
                                         <span id="preview-edu-degree">
-                                            {{ $cvInfo->educations->degree }}
+                                            {{ $cvInfo->education->degree }}
                                         </span>
-                                        <div class="text-[0.6rem]">
+                                        <div class="text-[0.5rem]">
                                             <span id="preview-edu-start-date">
-                                                {{ $cvInfo->educations->start_date }}
+                                                {{ $cvInfo->education->start_date }}
                                             </span>
                                             <span> - </span>
                                             <span id="preview-edu-end-date">
-                                                {{ $cvInfo->educations->end_date }}
+                                                {{ $cvInfo->education->end_date }}
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="text-[0.6rem] font-semibold text-gray-500">
+                                    <div class="text-[0.6rem] my-1 font-semibold text-gray-500">
                                         <span id="preview-edu-school">
-                                            {{ $cvInfo->educations->school }}
+                                            {{ $cvInfo->education->school }}
                                         </span>
                                         <span id="preview-edu-city-edu">
-                                            {{ $cvInfo->educations->city }}
+                                            {{ $cvInfo->education->city }}
                                         </span>
                                     </div>
-                                    <div class="preview-edu-descriptio text-[0.6rem] font-semibold text-gray-700">
-                                        {!! $cvInfo->educations->description !!}
+                                    <div class="preview-edu-descriptio text-[0.6rem]  text-gray-700">
+                                        {!! $cvInfo->education->description !!}
                                     </div>
                                     <hr class="mt-3">
                                 @endif
-                                {{-- eductaion section --}}
-                                {{-- <h2 class="font-semi-bold text-xs text-gray-700">Education</h2>
-                                <div
-                                    class="flex justify-between items-center text-[0.6rem] font-semibold text-gray-700">
-                                    <span id="preview-edu-degree"></span>
-                                    <div class="text-[0.6rem]">
-                                        <span id="preview-edu-start-date"></span>
-                                        <span> - </span>
-                                        <span id="preview-edu-end-date"></span>
-                                    </div>
-                                </div>
-                                <div class="text-[0.6rem] font-semibold text-gray-500">
-                                    <span id="preview-edu-school"></span>
-                                    <span id="preview-edu-city-edu"></span>
-                                </div>
-                                <div class="preview-edu-descriptio text-[0.6rem] font-semibold text-gray-700">
-                                    Hello I graduted
-                                </div>
-                                <hr class="mt-3"> --}}
                             </div>
                         </div>
                         <div class="w-[35%]">
                             <div class="p-3" id="preview-skill-container">
-                                @if($cvInfo = session('cv-info'))
-                                
-                        
+                                @if ($cvInfo = session('cv-info'))
+                                    <h2 class="font-semi-bold text-xs text-gray-700">Skills</h2>
+                                    @foreach ($cvInfo->skills as $skill)
+                                        <span class="text-[0.6rem] text-gray-700 font-semibold">
+                                            {{ $skill->name }}
+                                        </span>
+                                        <div class="w-full bg-gray-200 rounded-full h-1.5 mb-1 dark:bg-gray-700">
+                                            <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                                 style="width: {{ $skill->range }}%"></div>
+                                        </div>
+                                    @endforeach
+                                    <hr class="mt-3" />
                                 @endif
-                                
-                                {{-- <h2 class="font-semi-bold text-xs text-gray-700">Skills</h2>
-                                <div id="preview-skill-container">
-                                  render skill
-                                </div>
-                                <hr class="mt-3"> --}}
                             </div>
-                            <div class="p-3">
-                                {{-- language section --}}
-                                {{-- <h2 class="font-semi-bold text-xs text-gray-700">Languages</h2>
+                            <div id="language-container" class="p-3">
+                                @if ($cvInfo = session('cv-info'))
+                                    <h2 class="font-semi-bold text-xs text-gray-700">Languages</h2>
+                                    @foreach ($cvInfo->languages as $language)
+                                        <span class="text-[0.6rem] text-gray-700 font-semibold">
+                                            {{ $language->name }}
+                                        </span>
+                                        <div class="w-full bg-gray-200 rounded-full h-1.5 mb-1 dark:bg-gray-700">
+                                            <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                                                 style="width: {{ $language->level }}%"></div>
+                                        </div>
+                                    @endforeach
+                                    <hr class="mt-3" />
+                                @endif
+                            </div>
+                        </div>
+                        <div>
+                            {{-- language section --}}
+
+                            {{-- <h2 class="font-semi-bold text-xs text-gray-700">Languages</h2>
                                 <div id="preview-language-container">
                                     <div>
                                         <span class="text-[0.6rem] text-gray-700 font-semibold">English</span>
@@ -171,12 +173,12 @@
                                     </div>
                                 </div>
                                 <hr class="mt-3"> --}}
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <x-slot:scripts>
         @vite('resources/js/client/cv-form-create.js')

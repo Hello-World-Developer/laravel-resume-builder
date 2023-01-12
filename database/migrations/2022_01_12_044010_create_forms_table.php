@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('skills', function (Blueprint $table) {
+        Schema::create('forms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('form_id')->constrained('forms')->cascadeOnDelete();
-            $table->string('name');
-            $table->integer('range');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skills');
+        Schema::dropIfExists('forms');
     }
 };

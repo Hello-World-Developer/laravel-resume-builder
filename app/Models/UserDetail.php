@@ -13,16 +13,11 @@ class UserDetail extends Model
         'last_name',
         'email',
         'image',
-        'user_id',
+        'form_id',
         'head_line',
         'phone_number',
         'address',
         'post_code',
         'city',
     ];
-
-    public function users()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

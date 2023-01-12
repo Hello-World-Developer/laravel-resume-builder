@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('form_id')->constrained('forms')->cascadeOnDelete();
             $table->string('name');
             $table->integer('level');
             $table->timestamps();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Education;
+use App\Models\Form;
 use App\Models\Language;
 use App\Models\Skill;
 use App\Models\User;
@@ -43,7 +44,6 @@ class CvFormController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         try {
             DB::beginTransaction();
 
@@ -51,8 +51,13 @@ class CvFormController extends Controller
             $profile_name = uniqid() . '-' . $profile->getClientOriginalName();
             $profile->storeAs('public', $profile_name);
 
-            UserDetail::create([
+            $newForm = Form::create([
                 'user_id' => 1,
+                'name' => null,
+            ]);
+
+            UserDetail::create([
+                'form_id' =>  $newForm->id,
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
@@ -65,7 +70,7 @@ class CvFormController extends Controller
             ]);
 
             Education::create([
-                'user_id' => 1,
+                'form_id' => $newForm->id,
                 'degree' => $request->degree,
                 'school' => $request->school,
                 'city' => $request->city,
@@ -77,7 +82,7 @@ class CvFormController extends Controller
             if ($request->skills) {
                 foreach ($request->skills as $skill) {
                     Skill::create([
-                        'user_id' => 1,
+                        'form_id' => $newForm->id,
                         'name' => $skill['name'],
                         'range' => $skill['range'],
                     ]);
@@ -87,18 +92,18 @@ class CvFormController extends Controller
             if ($request->languages) {
                 foreach ($request->languages as $language) {
                     Language::create([
-                        'user_id' => 1,
+                        'form_id' => $newForm->id,
                         'name' => $language['name'],
                         'level' => $language['level'],
                     ]);
                 }
             }
             DB::commit();
-            $userInfo = User::with('userDetails', 'skills', 'languages', 'educations')
-                              ->latest()
-                              ->first();
+            $formInfo = Form::with('userDetail', 'skills', 'languages', 'education')
+                ->latest()
+                ->first();
 
-            session()->put('cv-info', $userInfo);
+            session()->put('cv-info', $formInfo);
 
             return redirect()->back();
         } catch (Exception $e) {

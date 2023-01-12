@@ -3,6 +3,7 @@
 use App\Http\Controllers\client\AuthController;
 use App\Http\Controllers\client\CvFormController;
 use App\Http\Controllers\client\HomeController;
+use App\Http\Controllers\DownloadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,8 @@ Route::name('client.')->group(function () {
 
     Route::get('/cv-form/create', [CvFormController::class, 'create'])->name('cv-form.create');
     Route::post('/cv-form/create', [CvFormController::class, 'store'])->name('cv-form.store');
+});
+
+Route::name('download')->prefix('download')->group(function () {
+    Route::get('cv', [DownloadController::class, 'downloadCv'])->name('cv');
 });
