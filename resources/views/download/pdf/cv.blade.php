@@ -13,7 +13,7 @@
     @if ($cvInfo)
         <div class="container flex justify-center">
             <div class="flex justify-center">
-                <div class="shadow-lg min-w-[8.27in]" id="export">
+                <div class="shadow-lg max-w-[8.27in]" id="export">
                     <header class="bg-[#303745] flex min-h-[50px]">
                         <img class="w-[80px] h-[80px]" src="{{ $cvInfo->userDetail->image }}" alt="img">
                         <div class="ml-5 mt-2 leading-[0]">
@@ -154,9 +154,6 @@
                 </div>
             </div>
         </div>
-        <script>
-            const cvInfo = @json($cvInfo)
-        </script>
         @vite(['resources/js/client/js-pdf.js'])
     @endif
 </body>

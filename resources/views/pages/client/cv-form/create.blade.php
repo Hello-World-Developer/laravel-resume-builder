@@ -1,7 +1,8 @@
 <x-layout.app-layout>
     <x-slot:libraries>
         <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-        <link href="{{ asset('ckeditor/styles.css') }}" rel="stylesheet">
+        <link href="{{ asset('ckeditor/styles.css') }}"
+              rel="stylesheet">
     </x-slot:libraries>
     <template id="clone-skill">
         <x-client.cv-form.skill />
@@ -11,10 +12,15 @@
     </template>
     <div class="flex">
         <div class="h-screen overflow-y-auto flex-1 p-10">
-            <form action="{{ route('client.cv-form.store') }}" method="POST" enctype="multipart/form-data"
+            <form action="{{ route('client.cv-form.store') }}"
+                  method="POST"
+                  enctype="multipart/form-data"
                   autocomplete="off">
                 @csrf
                 @method('POST')
+                @if ($cvInfo = session('cv-info'))
+                    <input type="hidden" name="form_id" value="{{ $cvInfo->id }}">
+                @endif
                 <x-client.cv-form.personal-detail />
                 <x-client.cv-form.education />
                 <x-client.cv-form.skill />
@@ -28,10 +34,11 @@
         </div>
         <div class="h-screen overflow-y-auto flex-1">
             <div class="flex justify-center mt-10">
-                <div class="min-w-[500px] border shadow-lg">
+                <div class="max-w-[600px] border shadow-lg">
                     <header class="bg-[#303745] flex min-h-[50px]">
                         @if ($cvInfo = session('cv-info'))
-                            <div class=" w-[80px] h-[80px] bg-cover bg-center bg-no-repeat" id="preview-cv-profile"
+                            <div class=" w-[80px] h-[80px] bg-cover bg-center bg-no-repeat"
+                                 id="preview-cv-profile"
                                  style="background-image: url('{{ $cvInfo->userDetail->image }}')">
                             </div>
                             <div class="ml-5 mt-2 leading-[0]">
@@ -39,31 +46,37 @@
                                     <span id="preview-first-name">{{ $cvInfo->userDetail->first_name }}</span>
                                     <span id="preview-last-name">{{ $cvInfo->userDetail->last_name }}</span>
                                 </h2>
-                                <p class="text-[0.4rem] font-bold leading-[3px] text-gray-400" id="preview-head-line">
+                                <p class="text-[0.4rem] font-bold leading-[3px] text-gray-400"
+                                   id="preview-head-line">
                                     {{ $cvInfo->userDetail->head_line }}
                                 </p>
                                 <div class="mt-3 flex items-center -mx-2">
                                     <p class="mx-2 flex items-center text-[0.5rem] font-bold text-gray-400">
-                                        <x-icon.mobile-phone class="w-[0.5rem] h-[0.5rem] hidden" />
-                                        <span class="ml-1 leading-3" id="preview-phone-number">
+                                        Ph no:
+                                        <span class="ml-1 leading-3"
+                                              id="preview-phone-number">
                                             {{ $cvInfo->userDetail->phone_number }}
                                         </span>
                                     </p>
                                     <p class="mx-2 flex items-center text-[0.5rem] font-bold text-gray-400">
-                                        <x-icon.envelope class="w-[0.5rem] h-[0.5rem] hidden" />
-                                        <span class="ml-1 leading-3" id="preview-email">
+                                        email:
+                                        <span class="ml-1 leading-3"
+                                              id="preview-email">
                                             {{ $cvInfo->userDetail->email }}
                                         </span>
                                     </p>
                                     <p class="mx-2 flex items-center text-[0.5rem] font-bold text-gray-400">
-                                        <x-icon.location class="w-[0.5rem] h-[0.5rem] hidden" />
-                                        <span class="ml-1 leading-3" id="preview-post-code">
+                                        Address:
+                                        <span class="ml-1 leading-3"
+                                              id="preview-post-code">
                                             {{ $cvInfo->userDetail->post_code }}
                                         </span>
-                                        <span class="ml-1 leading-3" id="preview-city">
+                                        <span class="ml-1 leading-3"
+                                              id="preview-city">
                                             {{ $cvInfo->userDetail->city }}
                                         </span>
-                                        <span class="ml-1 leading-3 mr-2" id="preview-address">
+                                        <span class="ml-1 leading-3 mr-2"
+                                              id="preview-address">
                                             {{ $cvInfo->userDetail->address }}
                                         </span>
                                     </p>
@@ -108,7 +121,8 @@
                             </div>
                         </div>
                         <div class="w-[35%]">
-                            <div class="p-3" id="preview-skill-container">
+                            <div class="p-3"
+                                 id="preview-skill-container">
                                 @if ($cvInfo = session('cv-info'))
                                     <h2 class="font-semi-bold text-xs text-gray-700">Skills</h2>
                                     @foreach ($cvInfo->skills as $skill)
@@ -123,7 +137,8 @@
                                     <hr class="mt-3" />
                                 @endif
                             </div>
-                            <div class="p-3" id="language-container">
+                            <div class="p-3"
+                                 id="language-container">
                                 @if ($cvInfo = session('cv-info'))
                                     <h2 class="font-semi-bold text-xs text-gray-700">Languages</h2>
                                     @foreach ($cvInfo->languages as $language)
@@ -180,8 +195,8 @@
             </div>
         </div>
     </div>
-    </div>
+    <x-client.template.template-01/>
     <x-slot:scripts>
-        @vite(['resources/js/client/cv-form-create.js'])
+        @vite(['resources/js/client/cv-form-create.js', 'resources/js/client/js-pdf.js'])
     </x-slot:scripts>
 </x-layout.app-layout>
