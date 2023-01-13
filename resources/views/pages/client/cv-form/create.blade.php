@@ -34,7 +34,7 @@
         </div>
         <div class="h-screen overflow-y-auto flex-1">
             <div class="flex justify-center mt-10">
-                <div class="max-w-[600px] border shadow-lg">
+                <div class="max-w-[600px] w-full border shadow-lg">
                     <header class="bg-[#303745] flex min-h-[50px]">
                         @if ($cvInfo = session('cv-info'))
                             <div class=" w-[80px] h-[80px] bg-cover bg-center bg-no-repeat"

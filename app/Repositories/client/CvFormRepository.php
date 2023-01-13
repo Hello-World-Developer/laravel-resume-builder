@@ -1,12 +1,12 @@
 <?php
-namespace App\Repostories\Client;
+namespace App\Repositories\Client;
 
 use App\Models\Form;
 use App\Models\Skill;
 use App\Models\Language;
 use App\Models\Education;
 use App\Models\UserDetail;
-use App\Repostories\Repository;
+use App\Repositories\Repository;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -80,7 +80,7 @@ class CvFormRepository  extends Repository
             session()->put('cv-info', $formInfo);
             session()->flash('success', 'The form is created successfully.');
 
-            return redirect()->back();
+            return redirect()->route('client.cv-form.create');
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();

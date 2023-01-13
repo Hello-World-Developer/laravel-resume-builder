@@ -3,17 +3,18 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
-use App\Repostories\Client\CvFormRepository;
+use App\Http\Requests\CvFormStoreRequest;
+use App\Repositories\Client\CvFormRepository;
 use Illuminate\Http\Request;
 
 
 class CvFormController extends Controller
-{   
-    protected $cvFormReposirory;
+{
+    protected $cvFormRepository;
 
-    public function __construct(CvFormRepository $cvFormReposirory)
+    public function __construct(CvFormRepository $cvFormRepository)
     {
-        $this->cvFormReposirory = $cvFormReposirory;
+        $this->cvFormRepository = $cvFormRepository;
     }
     /**
      * Display a listing of the resource.
@@ -41,12 +42,12 @@ class CvFormController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {   
+    public function store(CvFormStoreRequest $request)
+    {
         if($request->query('new')) {
             session()->forget('cv-info');
         }
-        return $this->cvFormReposirory->store($request);
+        return $this->cvFormRepository->store($request);
     }
 
     /**
