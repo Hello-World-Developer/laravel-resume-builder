@@ -1,17 +1,11 @@
-<x-layout.app-layout class="overflow-y-hidden-important">
+<x-layout.app-layout>
     <x-slot:libraries>
         <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
         <link href="{{ asset('ckeditor/styles.css') }}"
               rel="stylesheet">
     </x-slot:libraries>
-    <template id="clone-skill">
-        <x-client.cv-form.skill />
-    </template>
-    <template id="clone-education">
-        <x-client.cv-form.language />
-    </template>
     <div class="flex">
-        <div class="h-screen overflow-y-auto flex-1 p-10 ">
+        <div class="h-screen overflow-y-auto flex-1 p-10">
             <form action="{{ route('client.cv-form.store') }}"
                   method="POST"
                   enctype="multipart/form-data"
@@ -26,13 +20,13 @@
                 <x-client.cv-form.skill />
                 <x-client.cv-form.language />
                 <div class="flex justify-end items-center">
-                    <x-common.button.primary type="submit">
+                    <x-common.button.primary type="submit" class="mt-3">
                         Submit
                     </x-common.button.primary>
                 </div>
             </form>
         </div>
-        <div class="h-screen overflow-y-auto flex-1 hover:overflow-hidden">
+        <div class="h-screen overflow-y-auto flex-1">
             <div class="flex justify-center mt-10">
                 <div class="max-w-[600px] w-full border shadow-lg">
                     <header class="bg-[#303745] flex min-h-[50px]">
@@ -155,40 +149,7 @@
                             </div>
                         </div>
                         <div>
-                            {{-- language section --}}
 
-                            {{-- <h2 class="font-semi-bold text-xs text-gray-700">Languages</h2>
-                                <div id="preview-language-container">
-                                    <div>
-                                        <span class="text-[0.6rem] text-gray-700 font-semibold">English</span>
-                                        <div class="w-full bg-gray-200 rounded-full h-1.5 mb-1 dark:bg-gray-700">
-                                            <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
-                                                style="width: 70%"></div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <span class="text-[0.6rem] text-gray-700 font-semibold">France</span>
-                                        <div class="w-full bg-gray-200 rounded-full h-1.5 mb-1 dark:bg-gray-700">
-                                            <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
-                                                style="width: 70%"></div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <span class="text-[0.6rem] text-gray-700 font-semibold">Japanese</span>
-                                        <div class="w-full bg-gray-200 rounded-full h-1.5 mb-1 dark:bg-gray-700">
-                                            <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
-                                                style="width: 80%"></div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <span class="text-[0.6rem] text-gray-700 font-semibold">Japanese</span>
-                                        <div class="w-full bg-gray-200 rounded-full h-1.5 mb-1 dark:bg-gray-700">
-                                            <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
-                                                style="width: 76%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="mt-3"> --}}
                         </div>
                     </div>
                 </div>
@@ -197,6 +158,10 @@
     </div>
     <x-client.template.template-01/>
     <x-slot:scripts>
+        <script>
+            const $oldSkills = @json(old('skills',[]));
+            const $oldSkillErrors = @json($errors->get('skills.*'))
+        </script>
         @vite(['resources/js/client/cv-form-create.js', 'resources/js/client/js-pdf.js'])
     </x-slot:scripts>
 </x-layout.app-layout>
