@@ -1,5 +1,5 @@
 @props([
-    'id' => 'default',
+    'id' => uniqid(),
 ])
 <div class="mt-4" id="skill">
     <input class="peer/show-skill hidden" id="show-skill" type="checkbox" checked>

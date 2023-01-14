@@ -1,10 +1,10 @@
 @if ($cvInfo = session('cv-info'))
-    <div class="container flex justify-center overflow-hidden" style="visibility: hidden; height:0">
+    <div class="container flex justify-center overflow-hidden" style="visibility: hidden;height:0px">
         <div class="flex justify-center">
-            <div class="shadow-lg max-w-[8.27in] border"
+            <div class="shadow-lg min-w-[768px] border"
                  id="export">
                 <header class="bg-[#303745] flex min-h-[50px] items-center">
-                    <img class="w-[120px] h-[120px]"
+                    <img class="w-[110px] h-[100px]"
                          src="{{ $cvInfo->userDetail->image }}"
                          alt="img">
                     <div class="ml-5 leading-[0]">
@@ -18,7 +18,7 @@
                         </p>
                         <div class="mt-3 flex items-center -mx-2">
                             <p class="mx-2 flex items-center text-[0.7rem] font-bold text-gray-400">
-                                <span class="ml-1 leading-3"
+                                <span class="leading-3"
                                       id="preview-phone-number">
                                     Ph no: {{ $cvInfo->userDetail->phone_number }}
                                 </span>
@@ -31,7 +31,7 @@
                                 </span>
                             </p>
                             <p class="mx-2 flex items-center text-[0.7rem] font-bold text-gray-400">
-                                Address:S
+                                Address:
                                 <span class="ml-1 leading-3"
                                       id="preview-post-code">
                                     {{ $cvInfo->userDetail->post_code }}
@@ -49,7 +49,7 @@
                     </div>
                 </header>
                 <div class="p-5 flex">
-                    <div class="w-[65%] border-r h-[calc(11in_-_50px)]">
+                    <div class="w-[65%] border-r min-h-[940px]">
                         <div class="p-3">
                             {{-- eductaion section --}}
                             <h2 class="font-semi-bold text-md text-gray-700">Education</h2>
@@ -78,7 +78,7 @@
                             <div class="preview-edu-descriptio text-[0.8rem]  text-gray-700">
                                 {!! $cvInfo->education->description !!}
                             </div>
-                            <hr class="mt-3">
+                            <hr class="mt-5">
                         </div>
                     </div>
                     <div class="w-[35%]">
@@ -94,7 +94,7 @@
                                          style="width: {{ $skill->range }}%"></div>
                                 </div>
                             @endforeach
-                            <hr class="mt-3" />
+                            <hr class="mt-5" />
                         </div>
                         <div class="p-3"
                              id="language-container">
@@ -108,7 +108,7 @@
                                          style="width: {{ $language->level }}%"></div>
                                 </div>
                             @endforeach
-                            <hr class="mt-3" />
+                            <hr class="mt-5" />
                         </div>
                     </div>
                 </div>

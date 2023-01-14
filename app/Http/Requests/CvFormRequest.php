@@ -24,8 +24,8 @@ class CvFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => ['required', 'max:10'],
-            'last_name' => ['nullable', 'max:10'],
+            'first_name' => ['required', 'max:50'],
+            'last_name' => ['nullable', 'max:50'],
             'email'  => ['required', 'email'],
             'head_line' => ['required', 'max:100'],
             'profile' => ['required', 'image'],

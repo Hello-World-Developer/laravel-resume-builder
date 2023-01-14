@@ -18,13 +18,28 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::name('client.')->group(function () {
-    Route::get('/', HomeController::class)->name('index');
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
 
-    Route::get('/cv-form/create', [CvFormController::class, 'create'])->name('cv-form.create');
-    Route::post('/cv-form/create', [CvFormController::class, 'store'])->name('cv-form.store');
+    Route::middleware(['isLogin'])->group(function(){
+        Route::get('/', HomeController::class)->name('index');
+        Route::get('/cv-form/create', [CvFormController::class, 'create'])->name('cv-form.create');
+        Route::post('/cv-form/create', [CvFormController::class, 'store'])->name('cv-form.store');
+    });
+
+    Route::controller(AuthController::class)->group(function () {
+        Route::get('/signIn', 'signIn')->name('auth.signIn');
+        Route::get('/signUp', 'signUp')->name('auth.signUp');
+        Route::post('/register', 'register')->name('auth.register');
+        Route::post('/login', 'login')->name('auth.login');
+        Route::post('/logout', 'logout')->name('auth.logout');
+    });
+
+  
 });
 
 Route::name('download')->prefix('download')->group(function () {
     Route::get('cv', [DownloadController::class, 'downloadCv'])->name('cv');
+});
+
+Route::get('/test', function () {
+    return view('test');
 });

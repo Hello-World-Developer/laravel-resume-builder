@@ -3,10 +3,20 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Client\SignInRequest;
+use App\Http\Requests\Client\SignUpRequest;
+use App\Repositories\client\AuthRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    protected $authRepository;
+
+    public function __construct(AuthRepository $authRepository)
+    {
+        $this->authRepository = $authRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -83,8 +93,46 @@ class AuthController extends Controller
         //
     }
 
-    public function login()
+    public function login(SignInRequest $request)
+    {
+        $authenticated = $this->authRepository->login($request);
+
+        if ($authenticated) {
+            $request->session()->regenerate();
+            return redirect()->route('client.cv-form.create');
+        }
+
+        session()->flash('danger', 'The provided credentials do not match our records.');
+
+        return redirect()->back();
+    }
+
+    public function register(SignUpRequest $request)
+    {
+        $this->authRepository->register($request);
+        session()->flash('success', 'Register Successfully');
+
+        return redirect()->route('client.auth.signIn');
+    }
+
+    public function signIn()
     {
         return view('pages.client.login');
+    }
+
+    public function signUp()
+    {
+        return view('pages.client.register');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('client.auth.signIn');
     }
 }

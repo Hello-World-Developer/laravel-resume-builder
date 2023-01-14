@@ -1,12 +1,15 @@
 <x-layout.app-layout>
     <div class="flex h-screen container justify-center items-center">
         <div class="w-[350px]">
+            <x-common.helper.danger/>
             <div
                 class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
                 <form
                     class="space-y-6"
-                    action="#"
+                    action="{{ route('client.auth.login') }}" method="POST"
                 >
+                    @csrf
+                    @method('POST')
                     <h5 class="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h5>
                     <div>
                         <label
@@ -63,7 +66,7 @@
                     >Login to your account</button>
                     <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
                         Not registered? <a
-                            href="#"
+                            href="{{ route('client.auth.signUp') }}"
                             class="text-blue-700 hover:underline dark:text-blue-500"
                         >Create account</a>
                     </div>

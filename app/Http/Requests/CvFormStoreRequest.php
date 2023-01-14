@@ -24,25 +24,25 @@ class CvFormStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => ['required', 'max:10'],
-            'last_name' => ['nullable', 'max:10'],
+            'first_name' => ['required', 'max:20'],
+            'last_name' => ['nullable', 'max:20'],
             'email'  => ['required', 'email'],
-            'head_line' => ['required', 'max:20'],
+            'head_line' => ['required', 'max:100'],
             'profile' => ['required', 'image'],
             'phone_number' => ['required'],
             'address' => ['required', 'max:50'],
             'post_code' => ['nullable', 'max:10'],
-            'city'  => ['required', 'max:20'],
-            'degree' => ['required', 'max:20'],
-            'school' => ['required', 'max:20'],
-            'school_city' =>  ['required', 'max:20'],
+            'city'  => ['required', 'max:100'],
+            'degree' => ['required', 'max:100'],
+            'school' => ['required', 'max:100'],
+            'school_city' =>  ['required', 'max:100'],
             'start_date' =>  ['required', 'date'],
             'end_date' => ['required', 'date'],
-            'description' =>  ['required', 'max:200'],
-            'skills.*.name' => ['required', 'max:20'],
-            'skills.*.range' => ['required', 'max:20'],
-            'languages.*.name' => ['required', 'max:20'],
-            'languages.*.level' => ['required', 'max:20'],
+            'description' =>  ['required', 'max:1000'],
+            'skills.*.name' => ['required', 'max:100'],
+            'skills.*.range' => ['required', 'max:100'],
+            'languages.*.name' => ['required', 'max:100'],
+            'languages.*.level' => ['required', 'max:100'],
         ];
     }
 }

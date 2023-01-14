@@ -10,7 +10,8 @@ export default defineConfig({
                 'resources/js/client/cv-form-create.js',
                 'resources/js/client/js-pdf.js',
             ],
-            refresh: true,
+            // refresh: true,
         }),
     ],
 });
+

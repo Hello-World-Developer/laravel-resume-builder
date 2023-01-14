@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     public function __invoke()
-    {   
-        return view('pages.client.index');
+    {
+        return redirect()->route('client.cv-form.create', ['new' => true]);
     }
 }

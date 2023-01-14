@@ -1,4 +1,4 @@
-<x-layout.app-layout>
+<x-layout.app-layout class="overflow-y-hidden-important">
     <x-slot:libraries>
         <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
         <link href="{{ asset('ckeditor/styles.css') }}"
@@ -11,7 +11,7 @@
         <x-client.cv-form.language />
     </template>
     <div class="flex">
-        <div class="h-screen overflow-y-auto flex-1 p-10">
+        <div class="h-screen overflow-y-auto flex-1 p-10 ">
             <form action="{{ route('client.cv-form.store') }}"
                   method="POST"
                   enctype="multipart/form-data"
@@ -32,7 +32,7 @@
                 </div>
             </form>
         </div>
-        <div class="h-screen overflow-y-auto flex-1">
+        <div class="h-screen overflow-y-auto flex-1 hover:overflow-hidden">
             <div class="flex justify-center mt-10">
                 <div class="max-w-[600px] w-full border shadow-lg">
                     <header class="bg-[#303745] flex min-h-[50px]">
