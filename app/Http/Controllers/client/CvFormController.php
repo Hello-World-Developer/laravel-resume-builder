@@ -32,14 +32,12 @@ class CvFormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {   
-        // $formInfo = Form::with('userDetail', 'skills', 'languages', 'education')
-        //         ->where('id', 1)
-        //         ->latest()
-        //         ->first();
-
-            // session()->put('cv-info', $formInfo);
+        if($request->query('new')) {
+            session()->forget('cv-info');
+        }
+        
         return view('pages.client.cv-form.create');
     }
 
@@ -51,10 +49,12 @@ class CvFormController extends Controller
      */
     public function store(CvFormStoreRequest $request)
     {
-        if($request->query('new')) {
-            session()->forget('cv-info');
-        }
-        return $this->cvFormRepository->store($request);
+        $data = $this->cvFormRepository->store($request);
+
+        session()->put('cv-info', $data);
+        session()->flash('success', 'The form is created successfully.');
+
+        return redirect()->route('client.cv-form.create');
     }
 
     /**

@@ -160,7 +160,9 @@
     <x-slot:scripts>
         <script>
             const $oldSkills = @json(old('skills',[]));
-            const $oldSkillErrors = @json($errors->get('skills.*'))
+            const $oldSkillErrors = @json($errors->get('skills.*'));
+            const $oldLanguages = @json(old('languages', []));
+            const $oldLanguageErrors = @json($errors->get('languages.*'));
         </script>
         @vite(['resources/js/client/cv-form-create.js', 'resources/js/client/js-pdf.js'])
     </x-slot:scripts>

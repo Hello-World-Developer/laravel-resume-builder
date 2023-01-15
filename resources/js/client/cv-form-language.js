@@ -1,7 +1,42 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('cvLanguage', () => ({
         init() {
-            this.languages.push(this.createLanguage())
+            const errorLanguages = Object.entries($oldLanguageErrors).map(([id, message]) => {
+                return {
+                    id: id.match(/\d+/g)[0],
+                    message: message[0],
+                }
+            });
+
+            const oldLanguages = Object.entries($oldLanguages);
+
+            if (oldLanguages.length) {
+
+                this.languages = oldLanguages.map(function ([id, language]) {
+                    const data = {
+                        id,
+                        labelForName: `language_name_${id}`,
+                        labelForLevel: `language_level_${id}`,
+                        attr: {
+                            name: `languages[${id}][name]`,
+                            level: `languages[${id}][level]`,
+                        },
+                        name: language.name,
+                        level: language.level,
+                        done: false,
+                        error: {
+                            message: ''
+                        }
+                    };
+                    const error = errorLanguages.find(error => error.id == data.id)
+                    if (error) data.error = { message: error.message }
+                    return data;
+                })
+
+            } else {
+                this.languages.push(this.createLanguage())
+            }
+
         },
         languages: [],
         createLanguage() {
@@ -10,10 +45,16 @@ document.addEventListener('alpine:init', () => {
                 id,
                 labelForName: `language_name_${id}`,
                 labelForLevel: `language_level_${id}`,
-                name: `languages[${id}][name]`,
-                level: `languages[${id}][level]`,
+                attr: {
+                    name: `languages[${id}][name]`,
+                    level: `languages[${id}][level]`,
+                },
+                name:'',
+                level:0,
                 done: false,
-
+                error: {
+                    message: ''
+                }
             };
         },
         addLanguage() {
@@ -30,10 +71,9 @@ document.addEventListener('alpine:init', () => {
                 this.languages.push(this.createLanguage())
             }
         },
-        finishLanguageEdit(id)
-        {
+        finishLanguageEdit(id) {
             const found = this.languages.find((language) => language.id == id);
-            if(found) found.done = true;
+            if (found) found.done = true;
         }
     }))
 })

@@ -23,7 +23,8 @@
     <div class="hidden peer-checked/show-language:block"
          x-data="cvLanguage">
         <div id="language-container">
-            <template x-for="language in languages" x-bind:key="language.id">
+            <template x-for="language in languages"
+                      x-bind:key="language.id">
                 <div class="border mt-4 p-4"
                      x-bind:id="language.id"
                      @language-dropdown.window="languageDropdown($event.detail)">
@@ -36,9 +37,14 @@
                                type="text"
                                @click="language.done = false"
                                x-bind:id="language.labelForName"
-                               x-bind:name="language.name">
+                               x-bind:value="language.name"
+                               x-bind:name="language.attr.name">
+                        <x-common.helper.error>
+                            <span x-text="language.error.message"></span>
+                        </x-common.helper.error>
                     </div>
-                    <div x-show="!language.done" x-transition>
+                    <div x-show="!language.done"
+                         x-transition>
                         <div class="flex mt-3">
                             <div class="flex-1">
                                 <label class="block mb-1 text-sm text-md text-gray-500 dark:text-white"
@@ -47,9 +53,9 @@
                                 <div class="flex items-center w-full">
                                     <input class="language-range flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
                                            type="range"
-                                           value="0"
+                                           x-bind:value="language.level"
                                            x-bind:id="language.labelForLevel"
-                                           x-bind:name="language.level">
+                                           x-bind:name="language.attr.level">
                                     <div class="ml-4 flex-1">
                                         Basic
                                     </div>
@@ -68,7 +74,8 @@
                 </div>
             </template>
         </div>
-        <x-common.button.outline-dark class="flex items-center mt-5" @click="addLanguage">
+        <x-common.button.outline-dark class="flex items-center mt-5"
+                                      @click="addLanguage">
             <x-icon.circle-plus /> <span class="ml-2">Add language</span>
         </x-common.button.outline-dark>
     </div>

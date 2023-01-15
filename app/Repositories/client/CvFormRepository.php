@@ -25,7 +25,7 @@ class CvFormRepository  extends Repository
             $url = 'data:image/'.$ext.';base64,'.$base64encode;
 
             $newForm = Form::create([
-                'user_id' => 1,
+                'user_id' => $request->user()->id,
                 'name' => null,
             ]);
 
@@ -78,15 +78,12 @@ class CvFormRepository  extends Repository
                 ->latest()
                 ->first();
 
-            session()->put('cv-info', $formInfo);
-            session()->flash('success', 'The form is created successfully.');
+            return $formInfo;
 
-            return redirect()->route('client.cv-form.create');
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
             abort(500);
-            session()->flash('danger', 'Form creating failed');
         }
     }
 }
